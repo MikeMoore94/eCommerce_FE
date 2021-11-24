@@ -2,10 +2,17 @@
 import React, { Component } from "react";
 import axios from "axios";
 import "./App.css";
+<<<<<<< HEAD
 import {createBrowserHistory} from 'history'
 import { Container } from "react-bootstrap";
 import NavBar from "./NavBar/NavBar";
 
+=======
+
+import Login from "./Login/Login";
+import ProductList from "./ProductList/ProductList";
+import NavBar from "./NavBar/NavBar"; 
+>>>>>>> e5f7cde529fc21c43d8d49ca9989a61879c7c5ad
 
 
 
@@ -178,6 +185,7 @@ class App extends Component {
     }
 
     render(){
+<<<<<<< HEAD
       return(
         <Container fluid>
           <NavBar />
@@ -185,6 +193,31 @@ class App extends Component {
 
         </Container>
       )
+=======
+        return(
+          
+          <div>
+            <Router>
+              <Route
+                path="/profile"
+                render={(props) => {
+                  if (!this.state.user) {
+                    return (<Login {...props} userLogin={this.userLogin} />);
+                  } else {
+                    return( <ProductList {...props} productList={this.state.products} search={this.search} />);
+                  }
+                }}
+              />
+              <Route path="/login" render={props => <Login {...props} userLogin={this.userLogin} />} />
+              
+          
+  
+            </Router>
+            <NavBar />
+            </div>
+         
+      );
+>>>>>>> e5f7cde529fc21c43d8d49ca9989a61879c7c5ad
     }
   }
   

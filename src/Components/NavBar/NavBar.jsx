@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useState, useEffect} from 'react'
 
 
@@ -71,4 +72,25 @@ const NavBar = (props) =>{
      );
 }
 
+=======
+import React, { Component } from 'react';
+import './NavBar.css';
+
+class NavBar extends Component {
+   
+    render() {
+        return (
+          <React.Fragment>
+              <nav className="navBar">
+                    <a className="navBar-brand" >
+                        <h1>Shopping Cart <span className="badge">{this.props.ShoppingCart}</span></h1>
+                    </a>
+                </nav>
+          </React.Fragment>
+        );
+    }
+}
+
+
+>>>>>>> e5f7cde529fc21c43d8d49ca9989a61879c7c5ad
 export default NavBar;
