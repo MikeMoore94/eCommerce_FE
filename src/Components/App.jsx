@@ -6,7 +6,7 @@ import "./App.css";
 
 import Login from "./Login/Login";
 import ProductList from "./ProductList/ProductList";
-
+import NavBar from "./NavBar/NavBar"; 
 
 
 
@@ -72,6 +72,7 @@ class App extends Component {
           
   
             </Router>
+            <NavBar />
             </div>
          
       );
