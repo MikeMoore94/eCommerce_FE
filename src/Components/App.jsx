@@ -51,14 +51,19 @@ class App extends Component {
 
     register = async (registerUser) => {
       let secondRegister = registerUser
-      let response = await axios.post("https://localhost:44394/api/authentication/", registerUser);
-      if(response === undefined){
-        this.setState({});
-      }
-      else{
-        this.setState({
-          registeredUser: response.data,
-        });
+      try {
+
+        let response = await axios.post("https://localhost:44394/api/authentication/", registerUser);
+        if(response === undefined){
+          this.setState({});
+        }
+        else{
+          this.setState({
+            registeredUser: response.data,
+          });
+        }
+      } catch (err) {
+        Console.log("Error in executing authentication api: ",err)
       }
 
       await axios.put('https://localhost:44394/api/users/editname' + secondRegister.UserName, secondRegister)
