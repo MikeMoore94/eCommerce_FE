@@ -5,11 +5,7 @@ import "./App.css";
 import {createBrowserHistory} from 'history'
 import { Container } from "react-bootstrap";
 import NavBar from "./NavBar/NavBar";
-import MainShop from "./MainShop/MainShop";
-import ProductCard from "./MainShop/ProductCard";
-import ProductListing from "./SellerPage/ProductListing2";
-import ShoppingCart from "./ShoppingCart/ShoppingCart";
-import { withRouter } from 'react-router-dom';
+
 
 
 

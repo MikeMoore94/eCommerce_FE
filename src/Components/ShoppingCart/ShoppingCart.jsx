@@ -6,10 +6,10 @@ const ShoppingCart = ({ userId, product, updateQuantity, deleteProduct }) => {
 
     const onClickQuantity = () =>{
         if(count == 0){
-            deleteProduct(product.productId);
+            deleteProduct(product.ProductId);
         }
         else{
-            updateQuantity(userId, product.productId, count);
+            updateQuantity(userId, product.ProductId, count);
         }
     }
 

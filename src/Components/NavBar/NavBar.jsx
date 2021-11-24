@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react'
 
 
 const NavBar = (props) =>{
-    let userid = props.userid
+    let userId = props.userId
 
     const[anon, setAnon] = useState(true);
     const[seller, setSeller] =useState(false);
