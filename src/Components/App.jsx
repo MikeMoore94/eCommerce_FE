@@ -6,11 +6,15 @@ import {createBrowserHistory} from 'history'
 import { Container } from "react-bootstrap";
 import NavBar from "./NavBar/NavBar";
 import Register from "./Register/Register";
+import { Router } from "react-router";
+import { Route } from "react-router";
+import Login from "./Login/Login";
 
 
 
 
-const logged = createBrowserHistory();
+
+const history = createBrowserHistory();
 class App extends Component {
     constructor(props){
       super(props)
@@ -57,8 +61,8 @@ class App extends Component {
       }
 
       await axios.put('https://localhost:44394/api/users/editname' + secondRegister.UserName, secondRegister)
-      logged.push("/login");
-      logged.go('/login');
+      history.push("/login");
+      history.go('/login');
     }
 
     loginUser = async(login) => {
@@ -74,35 +78,35 @@ class App extends Component {
           localStorage.setItem('token', response.data.token);
         }
       }
-      catch(error){
-        console.log(error);
+      catch(err){
+        console.log(err);
       }
-      logged.push('/');
-      logged.go('/');
+      history.push('/');
+      history.go('/');
     }
 
     getCurrentUserToken = async () => {
       try{
-        const retrieve = localStorage.getItem('token');
-        if(retrieve === undefined){
+        const jwt = localStorage.getItem('token');
+        if(jwt === undefined){
           this.setState({});
         }
         else{
           this.setState({
-            token: retrieve,
+            token: jwt,
             loggedIn: true
           });
         };
       }
-      catch(error){
-        console.log(error);
+      catch(err){
+        console.log(err);
       }
     }
 
     getCurrentUser = async () => {
       try{
-        const retrieve = localStorage.getItem('token');
-        let response = await axios.get('https://localhost:44394/api/examples/user', {headers: {Authorization: 'Bearer ' + retrieve}});
+        const jwt = localStorage.getItem('token');
+        let response = await axios.get('https://localhost:44394/api/examples/user', {headers: {Authorization: 'Bearer ' + jwt}});
         if(response === undefined){
           this.setState({});
         }
@@ -110,12 +114,12 @@ class App extends Component {
           this.setState({
             user: response.data,
             loggedIn: true,
-            currentUserId: response.data.id,
+            currentUserId: response.data.Id,
           });
         }
       }
-      catch(error){
-        console.log(error);
+      catch(err){
+        console.log(err);
       }
       if(this.state.user.type === "Seller"){
         this.setState({userType:true})
@@ -128,12 +132,12 @@ class App extends Component {
         loggedIn: false,
         currentUser: []
       })
-      logged.push('/');
-      logged.go('/');
+      history.push('/');
+      history.go('/');
     }
 
     addItemToShoppingCart = async (ProductId) => {
-      let userId = this.state.user.id
+      let userId = this.state.user.Id
       let newCart = {
         "productId": ProductId,
         "userId": userId,
@@ -141,8 +145,8 @@ class App extends Component {
       }
       const response = await axios.post('https://localhost:44394/api/shoppingCart/addProduct/', newCart);
       this.setState({});
-      logged.push('/cart');
-      logged.go('/cart');
+      history.push('/cart');
+      history.go('/cart');
     }
 
     getProducts = async () => {
@@ -180,10 +184,11 @@ class App extends Component {
     render(){
       return(
         <Container fluid>
-          <NavBar />
+          <Router history={history}>
+            <NavBar status={this.state.userType} loggedIn={this.state.loggedIn} logout={this.logoutUser} products={this.state.products} formSubmission={this.searchProducts} userId={this.state.user.Id} searchTerm={this.state.searchTerm} />
+            <Route exact path='/login' render={() => <Login login={this.loginUser}/>} />
+          </Router>
           <Register />
-     
-
         </Container>
       )
     }
