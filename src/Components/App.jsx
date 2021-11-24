@@ -1,11 +1,12 @@
 import jwtDecode from "jwt-decode";
 import React, { Component } from "react";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { Route, Router } from "react-router-dom";
 import axios from "axios";
 import "./App.css";
 
 import Login from "./Login/Login";
-
+import ProductList from "./ProductList/ProductList";
+import NavBar from "./NavBar/NavBar"; 
 
 
 
@@ -53,12 +54,29 @@ class App extends Component {
 
     render(){
         return(
-          <BrowserRouter>
-            <Routes>
-            <Route path="/login" render={props => <Login {...props} userLogin={this.userLogin} />} />
-            </Routes>
-          </BrowserRouter>
-        )
+          
+          <div>
+            <Router>
+              <Route
+                path="/profile"
+                render={(props) => {
+                  if (!this.state.user) {
+                    return (<Login {...props} userLogin={this.userLogin} />);
+                  } else {
+                    return( <ProductList {...props} productList={this.state.products} search={this.search} />);
+                  }
+                }}
+              />
+              <Route path="/login" render={props => <Login {...props} userLogin={this.userLogin} />} />
+              
+          
+  
+            </Router>
+            <NavBar />
+            </div>
+         
+      );
     }
   }
-export default App;
+  
+  export default App;
