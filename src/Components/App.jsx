@@ -8,6 +8,8 @@ import NavBar from "./NavBar/NavBar";
 import { Router } from "react-router";
 import { Route } from "react-router";
 import Login from "./Login/Login";
+import EditProfile from "./EditProfile/EditProfile";
+import Register from "./Register/Register";
 
 
 
@@ -186,6 +188,8 @@ class App extends Component {
           <Router history={history}>
             <NavBar status={this.state.userType} loggedIn={this.state.loggedIn} logout={this.logoutUser} products={this.state.products} formSubmission={this.searchProducts} userId={this.state.user.Id} searchTerm={this.state.searchTerm} />
             <Route exact path='/login' render={() => <Login login={this.loginUser}/>} />
+            <Route exact path='/register' render={() => <Register register={this.register}/>}/>
+            <Route exact path='/profile/edit/:id' render={() => <EditProfile user={this.state.user.id} />}/>
           </Router>
         </Container>
       )
