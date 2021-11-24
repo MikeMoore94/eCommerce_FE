@@ -5,7 +5,7 @@ import "./App.css";
 import {createBrowserHistory} from 'history'
 import { Container } from "react-bootstrap";
 import NavBar from "./NavBar/NavBar";
-
+import Register from "./Register/Register";
 
 
 
@@ -46,7 +46,7 @@ class App extends Component {
 
     register = async (registerUser) => {
       let secondRegister = registerUser
-      let response = await axios.post("https://localhost:44394/api/authentication/", registerUser);
+      let response = await axios.post("https://localhost:44394/api/register/", registerUser);
       if(response === undefined){
         this.setState({});
       }
@@ -181,6 +181,7 @@ class App extends Component {
       return(
         <Container fluid>
           <NavBar />
+          <Register />
      
 
         </Container>
