@@ -9,6 +9,7 @@ import { Route } from "react-router";
 import Login from "./Login/Login";
 import EditProfile from "./EditProfile/EditProfile";
 import Register from "./Register/Register";
+import ProductList from "./ProductList/ProductList";
 
 
 
@@ -62,12 +63,12 @@ class App extends Component {
           });
         }
       } catch (err) {
-        Console.log("Error in executing authentication api: ",err)
+        console.log("Error in executing authentication api: ",err)
       }
 
-      await axios.put('https://localhost:44394/api/users/editname' + secondRegister.UserName, secondRegister)
-      history.push("/login");
-      history.go('/login');
+      // await axios.put('https://localhost:44394/api/users/editname' + secondRegister.UserName, secondRegister)
+      // history.push("/login");
+      // history.go('/login');
     }
 
     loginUser = async(login) => {
@@ -155,24 +156,24 @@ class App extends Component {
     }
 
     getProducts = async () => {
-      const response = await axios.get('https://localhost:44394/api/products');
+      const response = await axios.get('https://localhost:44394/api/product');
       this.setState({
         products: response.data
       })
     }
 
     addProduct = async () => {
-      const response = await axios.post('https://localhost:44394/api/products');
+      const response = await axios.post('https://localhost:44394/api/product');
       this.setState({});
     }
 
     editProduct = async () => {
-      const response = await axios.patch('https://localhost:44394/api/products/edit/')
+      const response = await axios.patch('https://localhost:44394/api/product/edit/')
       this.setState({})
     }
 
     deleteProduct= async (ProductId) =>{
-      const response = await axios.delete(`https://localhost:44394/api/products/delete/${ProductId}`);
+      const response = await axios.delete(`https://localhost:44394/api/product/delete/${ProductId}`);
       let allProducts = [];
       allProducts = this.state.products;
       let newProducts = [];
@@ -191,6 +192,7 @@ class App extends Component {
         <Container fluid>
           <Router history={history}>
             <NavBar status={this.state.userType} loggedIn={this.state.loggedIn} logout={this.logoutUser} products={this.state.products} formSubmission={this.searchProducts} userId={this.state.user.Id} searchTerm={this.state.searchTerm} />
+            <Route exact path='/' render={() => <ProductList products={this.state.products}/>} />
             <Route exact path='/login' render={() => <Login login={this.loginUser}/>} />
             <Route exact path='/register' render={() => <Register register={this.register}/>}/>
             <Route exact path='/profile/edit/:id' render={() => <EditProfile user={this.state.user.id} />}/>

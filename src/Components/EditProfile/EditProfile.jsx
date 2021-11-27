@@ -99,7 +99,7 @@ class EditProfile extends Component {
             type: seller
         }
         try {
-            let getURL = 'https://localhost:44394/api/users/' + this.props.user
+            let getURL = 'https://localhost:44394/api/users/' + this.props.user 
 
             axios.put(getURL, userEdit)
             if (this.state.seller === "Seller"){
