@@ -1,3 +1,4 @@
+import React from 'react';
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router';
@@ -45,7 +46,7 @@ const ProductDetails = (props) =>{
         reviewAPI().getAll().then(res=>{
             setProductReviewList(res.data)
         })
-        .catch(err => console.log(err))
+        .catch(err => console.log(error))
     }
 
     const filterReviews = () =>{
@@ -115,7 +116,7 @@ const ProductDetails = (props) =>{
 
             </div>
             <div className="col-4 review-box">
-                    {reviewStatus ? null : <p> Leave a review!</p>}
+                    {reviewStatus ? null : <p> Be the first to leave a review!</p>}
                         {allRelevant.map(function(review){
                             return(
                                 <p>{review.rating}/5 -- "{review.review}"</p>
