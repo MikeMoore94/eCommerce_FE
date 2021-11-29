@@ -11,7 +11,8 @@ import EditProfile from "./EditProfile/EditProfile";
 import Register from "./Register/Register";
 import ProductList from "./ProductList/ProductList";
 import ProductDisplay from "./ProductDetails/ProductDisplay";
-
+import ShoppingCart from "./ShoppingCart/ShoppingCart";
+import ProductForm from "./ProductList/ProductForm";
 
 
 
