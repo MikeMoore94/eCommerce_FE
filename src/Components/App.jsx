@@ -10,12 +10,18 @@ import Login from "./Login/Login";
 import EditProfile from "./EditProfile/EditProfile";
 import Register from "./Register/Register";
 import ProductList from "./ProductList/ProductList";
-import ProductDisplay from "./ProductDetails/ProductDisplay";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
+<<<<<<< HEAD
+import ProductForm from "./ProductList/ProductForm";
+// import ProductDisplay from "./ProductDetails/ProductDisplay";
+import SearchBar from "./SearchBar/SearchBar"
+
+=======
 import ProductForm from "./ProductList/ProductForm"
 import SearchBar from "./SearchBar/SearchBar"
 
 
+>>>>>>> 51558453c3e9623a5653137e40f6e32c2fab6bc8
 
 
 
@@ -155,19 +161,23 @@ class App extends Component {
       history.go('/');
     }
 
-    addItemToShoppingCart = async (ProductId) => {
-      let userId = this.state.user.Id
+    addItemToShoppingCart = async (productId) => {
+      let userId = this.state.currentUserId
       let newCart = {
-        "productId": ProductId,
-        "userId": userId,
-        "quantity": 1
+        ProductId: productId,
+        UserId: userId,
+        Quantity: 1
       }
-      const response = await axios.post('https://localhost:44394/api/shoppingCart/addProduct/', newCart);
+      const response = await axios.post('https://localhost:44394/api/shoppingcart/', newCart);
       this.setState({});
       history.push('/cart');
       history.go('/cart');
     }
 
+    updateCartQuantity = async (quantity, shoppingCartId) => {
+      const response = await axios.put(`https://localhost:44394/api/shoppingcart/${shoppingCartId}`, {Quantity:quantity})
+      this.getProducts();
+    }
 
     getProducts = async () => {
       const {currentUserId} = this.state;
@@ -179,6 +189,7 @@ class App extends Component {
         for (const item of cartResponse.data) {
           if (product.productId === item.productId ){
             product["quantity"]= item.quantity
+            product["shoppingCartId"]= item.shoppingCartId
             cartItems.push(product)
           }
         }
@@ -223,12 +234,11 @@ class App extends Component {
             <div>
               <SearchBar />
             </div>
-            <Route exact path='/' render={() => <ProductList products={this.state.products} currentUserId={this.state.currentUserId} handleDelete={this.deleteProduct} />} />
+            <Route exact path='/' render={() => <ProductList products={this.state.products} currentUserId={this.state.currentUserId} handleDelete={this.deleteProduct} handleAddToCart={this.addItemToShoppingCart} />} />
             <Route exact path='/login' render={() => <Login login={this.loginUser}/>} />
             <Route exact path='/register' render={() => <Register register={this.register}/>}/>
             <Route exact path='/profile/edit/:id' render={() => <EditProfile user={this.state.user.id} />}/>
-            <Route exact path='/ProductDetail/:urlProductId' render={() => <ProductDisplay products={this.state.products} userId={this.state.user.id}/>} />
-            <Route exact path='/cart' render={() => <ShoppingCart items={this.state.shoppingCartItems} />}/>
+            <Route exact path='/cart' render={() => <ShoppingCart items={this.state.shoppingCartItems} updateQuantity={this.updateCartQuantity} />}/>
             <Route exact path='/product' render={() => <ProductForm productId={null} currentUserId={this.state.currentUserId} />}/>
           </Router>
         </Container>
