@@ -4,8 +4,7 @@ import "./App.css";
 import {createBrowserHistory} from 'history'
 import { Container } from "react-bootstrap";
 import NavBar from "./NavBar/NavBar";
-import { Router } from "react-router";
-import { Route } from "react-router";
+import { Router, Route, Switch } from "react-router";
 import Login from "./Login/Login";
 import EditProfile from "./EditProfile/EditProfile";
 import Register from "./Register/Register";
@@ -14,7 +13,8 @@ import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import ProductForm from "./ProductList/ProductForm";
 import SearchBar from "./SearchBar/SearchBar"
 import ProductDisplay from "./ProductDetails/ProductDisplay";
-
+import ProductDetails from "./ProductDetails/ProductDetails";
+import Anon from "./Login/Anon";
 
 
 
@@ -225,9 +225,9 @@ class App extends Component {
         <Container fluid>
           <Router history={history}>
             <NavBar status={this.state.userType} loggedIn={this.state.loggedIn} logout={this.logoutUser} products={this.state.products} formSubmission={this.searchProducts} userId={this.state.user.Id} searchTerm={this.state.searchTerm} />
-            <div>
-              <SearchBar />
-            </div>
+            <Switch>
+            {this.state.loggedIn ? <Route exact path="/" render={() => <SearchBar props={this.state.products} addItemToShoppingCart={this.addItemToShoppingCart} loggedIn={this.state.loggedIn} />}/> : <Route exact path="/" render={() => <Anon />}/>}
+            
             <Route exact path='/' render={() => <ProductList products={this.state.products} currentUserId={this.state.currentUserId} handleDelete={this.deleteProduct} handleAddToCart={this.addItemToShoppingCart} />} />
             <Route exact path='/login' render={() => <Login login={this.loginUser}/>} />
             <Route exact path='/register' render={() => <Register register={this.register}/>}/>
@@ -235,6 +235,8 @@ class App extends Component {
             <Route exact path='/cart' render={() => <ShoppingCart items={this.state.shoppingCartItems} updateQuantity={this.updateCartQuantity} />}/>
             <Route exact path='/product' render={() => <ProductForm productId={null} currentUserId={this.state.currentUserId} />}/>
             <Route exact path='/reviews' render={() => <ProductDisplay products={this.state.products} userId={this.state.user.id}/>}/>
+            <Route exact path='/reviews' render={() => <ProductDetails products={this.state.products} userId={this.state.user.id}/>}/>
+            </Switch>
           </Router>
         </Container>
       )

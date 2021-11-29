@@ -16,7 +16,7 @@ const ProductDisplay = (props) =>{
 
     return ( 
         <> 
-            <div className="bod-bg-img" >
+            <div >
             <ProductDetails product={product} userId={props.userId}/>
             </div>
         </>
