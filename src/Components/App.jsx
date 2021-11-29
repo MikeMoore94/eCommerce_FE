@@ -32,13 +32,14 @@ class App extends Component {
         searchResults: [],
         searchEnable: false,
         userType: false,
-        searchTerm: ""
+        searchTerm: "",
+        shoppingCartItems: []
       };
     };
 
     componentDidMount(){
-      this.getProducts();
       this.getCurrentUser();
+      this.getProducts();
       if(this.state.localToken && !this.state.token){
         this.getCurrentUserToken();
         this.getCurrentUser();
@@ -47,6 +48,13 @@ class App extends Component {
         this.setState({
           loggedIn: false,
         });
+      }
+    }
+
+    componentDidUpdate(prevProps, prevState, snapShot){
+      const{currentUserId} = this.state;
+      if (currentUserId !== prevState.currentUserId){
+        this.getProducts();
       }
     }
 
@@ -121,7 +129,7 @@ class App extends Component {
           this.setState({
             user: response.data,
             loggedIn: true,
-            currentUserId: response.data.Id,
+            currentUserId: response.data.id,
           });
         }
       }
@@ -156,10 +164,25 @@ class App extends Component {
       history.go('/cart');
     }
 
+
     getProducts = async () => {
-      const response = await axios.get('https://localhost:44394/api/product');
+      const {currentUserId} = this.state;
+      let cartItems = []
+      const productResponse = await axios.get('https://localhost:44394/api/product');
+      if(currentUserId){
+      const cartResponse = await axios.get(`https://localhost:44394/api/shoppingcart/${currentUserId}`);
+      for (const product of productResponse.data) {
+        for (const item of cartResponse.data) {
+          if (product.productId === item.productId ){
+            product["quantity"]= item.quantity
+            cartItems.push(product)
+          }
+        }
+      }
+    }
       this.setState({
-        products: response.data
+        products: productResponse.data,
+        shoppingCartItems: cartItems
       })
     }
 
@@ -169,17 +192,17 @@ class App extends Component {
     }
 
     editProduct = async () => {
-      const response = await axios.patch('https://localhost:44394/api/product/edit/')
+      const response = await axios.patch('https://localhost:44394/api/product/')
       this.setState({})
     }
 
-    deleteProduct= async (ProductId) =>{
-      const response = await axios.delete(`https://localhost:44394/api/product/delete/${ProductId}`);
+    deleteProduct= async (productId) =>{
+      const response = await axios.delete(`https://localhost:44394/api/product/${productId}`);
       let allProducts = [];
       allProducts = this.state.products;
       let newProducts = [];
       allProducts.map((product)=> {
-        if(product.ProductId !== ProductId){
+        if(product.productId !== productId){
           newProducts.push(product)
         }
       })
@@ -193,11 +216,13 @@ class App extends Component {
         <Container fluid>
           <Router history={history}>
             <NavBar status={this.state.userType} loggedIn={this.state.loggedIn} logout={this.logoutUser} products={this.state.products} formSubmission={this.searchProducts} userId={this.state.user.Id} searchTerm={this.state.searchTerm} />
-            <Route exact path='/' render={() => <ProductList products={this.state.products}/>} />
+            <Route exact path='/' render={() => <ProductList products={this.state.products} currentUserId={this.state.currentUserId} handleDelete={this.deleteProduct} />} />
             <Route exact path='/login' render={() => <Login login={this.loginUser}/>} />
             <Route exact path='/register' render={() => <Register register={this.register}/>}/>
             <Route exact path='/profile/edit/:id' render={() => <EditProfile user={this.state.user.id} />}/>
             <Route exact path='/ProductDetail/:urlProductId' render={() => <ProductDisplay products={this.state.products} userId={this.state.user.id}/>} />
+            <Route exact path='/cart' render={() => <ShoppingCart items={this.state.shoppingCartItems} />}/>
+            <Route exact path='/product' render={() => <ProductForm productId={null} currentUserId={this.state.currentUserId} />}/>
           </Router>
         </Container>
       )

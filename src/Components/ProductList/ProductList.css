@@ -1,0 +1,28 @@
+.productTable {
+    /* display: flex; */
+    /* margin-top: 1rem; */
+    /* flex-direction: column; */
+    /* gap: 5px; */
+    padding: 1rem;
+  }
+  
+  table {
+    border-collapse: separate;
+    width: 100%;
+  }
+  
+  th, td {
+    border: 3px solid #969696ff;
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    color: white;
+  }
+  
+  th {
+    background-color: rgb(8, 120, 124);
+  }
+  
+  td {
+    background-color: rgb(19, 141, 59);
+  }
