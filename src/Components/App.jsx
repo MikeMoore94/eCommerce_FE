@@ -15,6 +15,7 @@ import SearchBar from "./SearchBar/SearchBar"
 import ProductDisplay from "./ProductDetails/ProductDisplay";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import Anon from "./Login/Anon";
+import Review from "./Review/Review";
 
 
 
@@ -233,9 +234,8 @@ class App extends Component {
             <Route exact path='/register' render={() => <Register register={this.register}/>}/>
             <Route exact path='/profile/edit/:id' render={() => <EditProfile user={this.state.user.id} />}/>
             <Route exact path='/cart' render={() => <ShoppingCart items={this.state.shoppingCartItems} updateQuantity={this.updateCartQuantity} />}/>
-            <Route exact path='/product' render={() => <ProductForm productId={null} currentUserId={this.state.currentUserId} />}/>
-            <Route exact path='/product/:id' render={() => <ProductDetails products={this.state.products} userId={this.state.user.id}/>}/>
-
+            <Route exact path='/product' render={() => <ProductList productId={null} currentUserId={this.state.currentUserId} />}/>
+            <Route exact path='/reviews' render={() => <Review products={this.state.products} userId={this.state.user.id}/>}/>
             </Switch>
           </Router>
         </Container>
