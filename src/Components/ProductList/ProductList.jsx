@@ -1,5 +1,7 @@
 import React, { Component } from "react";
+import ProductDisplay from "../ProductDetails/ProductDisplay";
 import "./ProductList.css";
+import { Route } from "react-router";
 
 export class ProductList extends Component {
   constructor(props) {
@@ -55,6 +57,7 @@ export class ProductList extends Component {
                       <td>{product.category}</td>
                       <td>
                         {product.rating}
+                        <button onClick={() => <a href='/reviews'></a>}>Leave A Review</button>
                       </td>
                     </tr>
                   </tbody>
