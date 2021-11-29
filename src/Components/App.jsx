@@ -234,8 +234,8 @@ class App extends Component {
             <Route exact path='/profile/edit/:id' render={() => <EditProfile user={this.state.user.id} />}/>
             <Route exact path='/cart' render={() => <ShoppingCart items={this.state.shoppingCartItems} updateQuantity={this.updateCartQuantity} />}/>
             <Route exact path='/product' render={() => <ProductForm productId={null} currentUserId={this.state.currentUserId} />}/>
-            <Route exact path='/reviews' render={() => <ProductDisplay products={this.state.products} userId={this.state.user.id}/>}/>
-            <Route exact path='/reviews' render={() => <ProductDetails products={this.state.products} userId={this.state.user.id}/>}/>
+            <Route exact path='/product/:id' render={() => <ProductDetails products={this.state.products} userId={this.state.user.id}/>}/>
+
             </Switch>
           </Router>
         </Container>
