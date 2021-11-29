@@ -11,17 +11,10 @@ import EditProfile from "./EditProfile/EditProfile";
 import Register from "./Register/Register";
 import ProductList from "./ProductList/ProductList";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
-<<<<<<< HEAD
 import ProductForm from "./ProductList/ProductForm";
 // import ProductDisplay from "./ProductDetails/ProductDisplay";
 import SearchBar from "./SearchBar/SearchBar"
 
-=======
-import ProductForm from "./ProductList/ProductForm"
-import SearchBar from "./SearchBar/SearchBar"
-
-
->>>>>>> 51558453c3e9623a5653137e40f6e32c2fab6bc8
 
 
 

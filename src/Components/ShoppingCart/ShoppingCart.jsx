@@ -23,14 +23,15 @@ const ShoppingCart = ({ userId, items, updateQuantity, deleteProduct }) => {
               <tbody>
                 <tr key={item.shoppingCartId}>
                   <td>{item.name}</td>
-                  <td>{item.price}</td>
+                  <td>${item.price * item.quantity}</td>
                   <td>{item.description}</td>
                   <td>{item.category}</td>
                   <td>{item.rating}</td>
                   <td>
-                    
+                    <button onClick={() => updateQuantity(item.quantity - 1, item.shoppingCartId)} type="button" className="cart-btn button"> - </button>
                     {item.quantity}
-                    
+                    <button onClick={() => updateQuantity(item.quantity + 1, item.shoppingCartId)} type="button" className="cart-btn button"> + </button>
+                    <button onClick={() => updateQuantity(0, item.shoppingCartId)} type="button" className="cart-btn button"> Remove </button>
                   </td>
                 </tr>
               </tbody>

@@ -50,7 +50,7 @@ export class ProductList extends Component {
                         </td>
                       )}
                       <td>{product.name}</td>
-                      <td>{product.price}</td>
+                      <td>${product.price}</td>
                       <td>{product.description}</td>
                       <td>{product.category}</td>
                       <td>
@@ -62,7 +62,6 @@ export class ProductList extends Component {
               );
             })}
           </div>
-        )
       </div>
     );
   }
