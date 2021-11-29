@@ -1,4 +1,4 @@
-import React from 'react';
+
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router';
@@ -46,7 +46,7 @@ const ProductDetails = (props) =>{
         reviewAPI().getAll().then(res=>{
             setProductReviewList(res.data)
         })
-        .catch(err => console.log(error))
+        .catch(err => console.log(err))
     }
 
     const filterReviews = () =>{

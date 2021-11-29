@@ -11,17 +11,11 @@ import EditProfile from "./EditProfile/EditProfile";
 import Register from "./Register/Register";
 import ProductList from "./ProductList/ProductList";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
-<<<<<<< HEAD
 import ProductForm from "./ProductList/ProductForm";
-// import ProductDisplay from "./ProductDetails/ProductDisplay";
 import SearchBar from "./SearchBar/SearchBar"
-
-=======
-import ProductForm from "./ProductList/ProductForm"
-import SearchBar from "./SearchBar/SearchBar"
+import ProductDisplay from "./ProductDetails/ProductDisplay";
 
 
->>>>>>> 51558453c3e9623a5653137e40f6e32c2fab6bc8
 
 
 
@@ -240,6 +234,7 @@ class App extends Component {
             <Route exact path='/profile/edit/:id' render={() => <EditProfile user={this.state.user.id} />}/>
             <Route exact path='/cart' render={() => <ShoppingCart items={this.state.shoppingCartItems} updateQuantity={this.updateCartQuantity} />}/>
             <Route exact path='/product' render={() => <ProductForm productId={null} currentUserId={this.state.currentUserId} />}/>
+            <Route exact path='/reviews' render={() => <ProductDisplay products={this.state.products} userId={this.state.user.id}/>}/>
           </Router>
         </Container>
       )
