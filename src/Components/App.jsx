@@ -11,6 +11,9 @@ import EditProfile from "./EditProfile/EditProfile";
 import Register from "./Register/Register";
 import ProductList from "./ProductList/ProductList";
 import ProductDisplay from "./ProductDetails/ProductDisplay";
+import ShoppingCart from "./ShoppingCart/ShoppingCart";
+import ProductForm from "./ProductList/ProductForm"
+import SearchBar from "./SearchBar/SearchBar"
 
 
 
@@ -57,6 +60,7 @@ class App extends Component {
         this.getProducts();
       }
     }
+    
 
     register = async (registerUser) => {
       let secondRegister = registerUser
@@ -216,6 +220,9 @@ class App extends Component {
         <Container fluid>
           <Router history={history}>
             <NavBar status={this.state.userType} loggedIn={this.state.loggedIn} logout={this.logoutUser} products={this.state.products} formSubmission={this.searchProducts} userId={this.state.user.Id} searchTerm={this.state.searchTerm} />
+            <div>
+              <SearchBar />
+            </div>
             <Route exact path='/' render={() => <ProductList products={this.state.products} currentUserId={this.state.currentUserId} handleDelete={this.deleteProduct} />} />
             <Route exact path='/login' render={() => <Login login={this.loginUser}/>} />
             <Route exact path='/register' render={() => <Register register={this.register}/>}/>
