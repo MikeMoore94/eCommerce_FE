@@ -10,6 +10,7 @@ import Login from "./Login/Login";
 import EditProfile from "./EditProfile/EditProfile";
 import Register from "./Register/Register";
 import ProductList from "./ProductList/ProductList";
+import ProductDisplay from "./ProductDetails/ProductDisplay";
 
 
 
@@ -196,6 +197,7 @@ class App extends Component {
             <Route exact path='/login' render={() => <Login login={this.loginUser}/>} />
             <Route exact path='/register' render={() => <Register register={this.register}/>}/>
             <Route exact path='/profile/edit/:id' render={() => <EditProfile user={this.state.user.id} />}/>
+            <Route exact path='/ProductDetail/:urlProductId' render={() => <ProductDisplay products={this.state.products} userId={this.state.user.id}/>} />
           </Router>
         </Container>
       )
