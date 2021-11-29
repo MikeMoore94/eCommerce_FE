@@ -15,12 +15,30 @@ button {
 }
 
 /* Class */
-.navBar {
-    width: 100%;
-    background-color: #111;
-    color: red;
-    padding: 10px;
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
 }
+
+.container{
+    min-height: 40vh;
+    width: 200%;
+    display: flex;
+    align-items: center;
+    justify-content: content center;
+}
+    
+
+.nav-bar {
+    background-image: url(./IMG/pets.jpg);
+    background-size: cover;
+    background-position: top center;
+    position: relative;
+    z-index: 1;
+}
+
+
 
 .links {
   height: 0;

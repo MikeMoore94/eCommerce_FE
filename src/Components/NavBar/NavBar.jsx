@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-
+import "./NavBar.css";
 
 const NavBar = (props) =>{
     let userId = props.Id
@@ -47,7 +47,7 @@ const NavBar = (props) =>{
     let sellerURL = "/Seller/" + userId
     return ( 
         <> 
-        <div className="row nav-bar">
+        <div className="nav-bar">
             <div className="col-1">
                 
             </div>
