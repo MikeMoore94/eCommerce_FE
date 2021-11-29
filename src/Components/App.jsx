@@ -12,13 +12,9 @@ import Register from "./Register/Register";
 import ProductList from "./ProductList/ProductList";
 import ProductDisplay from "./ProductDetails/ProductDisplay";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
-<<<<<<< HEAD
-import ProductForm from "./ProductList/ProductForm";
-=======
 import ProductForm from "./ProductList/ProductForm"
 import SearchBar from "./SearchBar/SearchBar"
 
->>>>>>> d33364414b86ed5a9a04f1e68924dc62adc24970
 
 
 
