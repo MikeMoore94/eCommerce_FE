@@ -12,7 +12,7 @@ const SearchBarSection = () => {
 
   const filteredProducts = products.filter((product) => {
     if (
-      product.tags.toLowerCase().includes(search) ||
+      product.description.toLowerCase().includes(search) ||
       product.title.toLowerCase().includes(search) ||
       product.category.toLowerCase().includes(search)
     ) {
