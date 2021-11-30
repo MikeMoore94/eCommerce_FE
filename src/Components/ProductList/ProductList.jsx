@@ -66,7 +66,18 @@ export class ProductList extends Component {
                       <td>{product.category}</td>
                       <td>
                         {rating !== 0 && numReviews !== 0 ?  (rating/numReviews).toFixed(1) : 0}
-                        <Link to={`/reviews/${product.productId}`}>Leave A Review</Link>
+                        <Link to={{ 
+                          pathname:`/reviews/`,
+                           state:{
+                             productId:product.productId
+                            }
+                          }}>Leave A Review</Link>
+                           <Link to={{ 
+                          pathname:`/reviews/see`,
+                           state:{
+                             productId:product.productId
+                            }
+                          }}>See reviews</Link>
                       </td>
                     </tr>
                   </tbody>

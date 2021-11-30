@@ -1,12 +1,13 @@
 import React, {useState} from "react";
+import { useLocation } from "react-router";
 
 const CreateReview = (props) => {
-
+    const location = useLocation();
 
     const [review, setReview] = useState({
         body : " ",
         starRating : " ",
-        productId : " "
+        productId :location.state.productId
 
     });
 
@@ -24,7 +25,7 @@ const CreateReview = (props) => {
             let newReview = {
                 body : review.body,
                 starRating : rating,
-                productId : props.productId
+                productId : review.productId
             }
             props.addReview(newReview)
     }
