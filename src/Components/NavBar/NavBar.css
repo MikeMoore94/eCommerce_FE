@@ -1,6 +1,4 @@
 #navBar{
-
-    background-image: url("./IMG/pets.jpg");
     background-size: cover;
     background-position: top center;
     position: relative;
@@ -11,7 +9,7 @@
     left: 0;
     top: 0;
     height: auto;
-    width: 100%;
+    width: 140;
     background-color: black;
     opacity: .7;
     z-index: -1;

@@ -50,7 +50,7 @@ const NavBar = (props) =>{
             <section id="navBar">
                 <div class= "navBar container"></div>
                     <div>
-                    <img src="./IMG/pets.jpg" width="100" height="140" />
+                    
                         <span> <a href="/" class="cta"> Home </a> 
                             {anon ? <span>|  <a href="/login" class="cta"> Login </a> </span> :null}
                             {anon ? <span> |  <a href="/register" class="cta"> Register </a> </span>:null}
