@@ -1,5 +1,6 @@
 import React, {Fragment, Component} from 'react';
 import HeroImg from "./IMG/pets.jpg";
+import './HeroImage.css'
 
 
 
@@ -9,10 +10,10 @@ class HeroImage extends Component{
         return(  
                       
             <Fragment>
-                    <div class="hero-image">
+                    <div  className="hero-image">
                         <img src={HeroImg} />
-                        <div class="hero-text">
-                            <span class="background"><h1>PET SUPPLIES</h1></span>
+                        <div >
+                            <span ><h1 className="testing">PET SUPPLIES</h1></span>
                             <p>Get What Your Pet Needs!</p>
                         </div>
                     </div>
