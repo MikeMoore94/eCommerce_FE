@@ -54,8 +54,8 @@ const NavBar = (props) =>{
             <div className="col-4">
             </div>
             <div className="col-6 nav-links">
-            <span> <a href="/"> Home </a> </span>
-            <span> <a href="/store"> Store </a> </span>
+                <span> <a href="/"> Home </a> </span>
+                <span> <a href="/store"> Store </a> </span>
                 {anon ? <span>|  <a href="/login"> Login </a> </span> :null}
                 {anon ? <span> |  <a href="/register"> Register </a> </span>:null}
                 {/* {seller ? <span>|  <a href="/profile/edit/{userid}"> Edit Profile </a> </span>: null} */}
