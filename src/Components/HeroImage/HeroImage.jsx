@@ -1,5 +1,5 @@
-import React, {Component} from 'react';
-import HeroImg from "./HeroImage.css";
+import React, {Fragment, Component} from 'react';
+import HeroImg from "./IMG/pets.jpg";
 
 
 
@@ -7,13 +7,15 @@ import HeroImg from "./HeroImage.css";
 class HeroImage extends Component{
     render(){
         return(
-            <div class="hero-image">
-                <HeroImg></HeroImg>
-                <div class="hero-text">
-                    <h1 style="font-size:50px">PET SUPPLIES</h1>
-                    <p>Get What Your Pet Needs!</p>
+            <Fragment>
+                <div class="hero-image">
+                    <img src={HeroImg} />
+                    <div class="hero-text">
+                        <h1>PET SUPPLIES</h1>
+                        <p>Get What Your Pet Needs!</p>
+                    </div>
                 </div>
-            </div>
+            </Fragment>
         );
     }
 }

@@ -234,9 +234,9 @@ class App extends Component {
     render(){
       return(
         <Container fluid>
-         {/* <HeroImage /> */}
           <Router history={history}>
             <NavBar status={this.state.userType} loggedIn={this.state.loggedIn} logout={this.logoutUser} products={this.state.products} formSubmission={this.searchProducts} userId={this.state.user.Id} searchTerm={this.state.searchTerm} />
+            <HeroImage />
             <Switch>
             {this.state.loggedIn ? <Route exact path="/" render={() => <SearchBar props={this.state.products} addItemToShoppingCart={this.addItemToShoppingCart} loggedIn={this.state.loggedIn} />}/> : <Route exact path="/" render={() => <Anon />}/>}
             
