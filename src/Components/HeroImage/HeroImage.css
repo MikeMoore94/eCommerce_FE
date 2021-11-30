@@ -23,3 +23,7 @@ body, html {
     color: white;
 }
 
+.background {
+    padding: 10px;
+    background-color: lightsalmon;
+}

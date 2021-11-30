@@ -6,16 +6,19 @@ import HeroImg from "./IMG/pets.jpg";
 
 class HeroImage extends Component{
     render(){
-        return(
+        return(  
+                      
             <Fragment>
-                <div class="hero-image">
-                    <img src={HeroImg} />
-                    <div class="hero-text">
-                        <h1>PET SUPPLIES</h1>
-                        <p>Get What Your Pet Needs!</p>
+                    <div class="hero-image">
+                        <img src={HeroImg} />
+                        <div class="hero-text">
+                            <h1>PET SUPPLIES</h1>
+                            <p>Get What Your Pet Needs!</p>
+                        </div>
                     </div>
-                </div>
+                
             </Fragment>
+            
         );
     }
 }
