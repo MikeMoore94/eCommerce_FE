@@ -1,4 +1,6 @@
 #navBar{
+    padding-bottom: 0px;
+    padding-top: 40px;
     background-color: beige;
     background-size: cover;
     background-position: top center;
@@ -30,9 +32,9 @@
 }
 #navBar .cta{
     display: inline-block;
-    padding: 5px;
+    padding: 20px;
     background-color: transparent;
-    font-size: 1rem;
+    font-size: 1.5rem;
     text-transform: uppercase;
     letter-spacing: .1rem;
     margin-top: 30px;

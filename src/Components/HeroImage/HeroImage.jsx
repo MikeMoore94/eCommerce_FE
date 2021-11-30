@@ -12,7 +12,7 @@ class HeroImage extends Component{
                     <div class="hero-image">
                         <img src={HeroImg} />
                         <div class="hero-text">
-                            <h1>PET SUPPLIES</h1>
+                            <span class="background"><h1>PET SUPPLIES</h1></span>
                             <p>Get What Your Pet Needs!</p>
                         </div>
                     </div>
