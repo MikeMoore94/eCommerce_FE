@@ -2,7 +2,6 @@
 import axios from 'axios';
 import React, {useState, useEffect} from 'react';
 import { useParams } from 'react-router';
-import DisplayReview from '../Review/DisplayReview'
 
 const ProductDetails = (props) =>{
     const {urlProductId} = useParams();
@@ -145,12 +144,6 @@ const ProductDetails = (props) =>{
                             <div className="row">
                                 <button type="submit">Submit Review</button>
                             </div>
-                            <DisplayReview reviews={props.reviews}
-                                    postReview={props.postReview}
-                                    getsReviews={props.getReviews}
-                                    product={props.product}
-                                    user={props.user}  /> 
-
                         </form>
                     </div>
                     <div className="col-1">

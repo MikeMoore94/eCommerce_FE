@@ -17,7 +17,6 @@ import ProductDisplay from "./ProductDetails/ProductDisplay";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import Anon from "./Login/Anon";
 import Review from "./Review/Review";
-import DisplayReview from "./Review/DisplayReview";
 // import HeroImage from "./HeroImage/HeroImage";
 
 
@@ -232,18 +231,6 @@ class App extends Component {
       history.go('/store');
     }
 
-    getReviews = async (productId) => {
-      try{
-        let response = await axios.get(`https://localhost:44394/api/reviews/${productId}`);
-        this.setState({
-          reviews: response.data
-        })
-      }
-      catch(er) {
-        console.log("Error with getReview", er)
-      }
-    }
-
     render(){
       return(
         <Container fluid>
@@ -259,8 +246,7 @@ class App extends Component {
             {/* <Route exact path='/profile/edit/:id' render={() => <EditProfile user={this.state.user.id} />}/> */}
             <Route exact path='/cart' render={() => <ShoppingCart items={this.state.shoppingCartItems} updateQuantity={this.updateCartQuantity} />}/>
             <Route exact path='/product' render={() => <ProductForm productId={null} currentUserId={this.state.currentUserId} />}/>
-            <Route exact path='/reviews/' render={() => <Review userId={this.state.user.id} productId={7} addReview={this.addReview} getReview={this.getReviews}/>}/>
-            <Route exact path='/reviews/see' render={() => <DisplayReview/>}/>
+            <Route exact path='/reviews/:id' render={() => <Review userId={this.state.user.id} addReview={this.addReview} />}/>
             </Switch>
           </Router>
         </Container>

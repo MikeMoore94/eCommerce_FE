@@ -7,8 +7,7 @@ import './HeroImage.css'
 
 class HeroImage extends Component{
     render(){
-        return(  
-                      
+        return(
             <Fragment>
                     <div  className="hero-image">
                         <img src={HeroImg} />
@@ -19,7 +18,6 @@ class HeroImage extends Component{
                     </div>
                 
             </Fragment>
-            
         );
     }
 }

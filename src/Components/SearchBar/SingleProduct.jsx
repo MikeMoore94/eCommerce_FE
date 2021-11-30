@@ -18,7 +18,7 @@ const SingleProduct=(props)=> {
                         <div className="col-10">
                             <p>{props.product.name}
                             <br />{props.product.description}
-                            <br />{props.product.price}</p>
+                            <br />${props.product.price}</p>
                         </div>
                         <div className="col-2">
                         {/* <br />{props.loggedIn ? <button className="detail-btn" ><Link to={linkPath} render={() => <ProductDisplay {...props} productId={props.product.productId} />}> View Item Details </Link></button> : "Please login to see Item details" } */}
