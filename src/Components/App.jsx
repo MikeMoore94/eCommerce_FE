@@ -11,12 +11,13 @@ import Register from "./Register/Register";
 import ProductList from "./ProductList/ProductList";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
 import ProductForm from "./ProductList/ProductForm";
-import SearchBar from "./SearchBar/SearchBar"
+import SearchBar from "./SearchBar/SearchBar";
+import HeroImage from "./HeroImage/HeroImage";
 import ProductDisplay from "./ProductDetails/ProductDisplay";
 import ProductDetails from "./ProductDetails/ProductDetails";
 import Anon from "./Login/Anon";
 import Review from "./Review/Review";
-
+// import HeroImage from "./HeroImage/HeroImage";
 
 
 
@@ -235,6 +236,7 @@ class App extends Component {
         <Container fluid>
           <Router history={history}>
             <NavBar status={this.state.userType} loggedIn={this.state.loggedIn} logout={this.logoutUser} products={this.state.products} formSubmission={this.searchProducts} userId={this.state.user.Id} searchTerm={this.state.searchTerm} />
+            <HeroImage />
             <Switch>
             {this.state.loggedIn ? <Route exact path="/" render={() => <SearchBar props={this.state.products} addItemToShoppingCart={this.addItemToShoppingCart} loggedIn={this.state.loggedIn} />}/> : <Route exact path="/" render={() => <Anon />}/>}
             
