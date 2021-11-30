@@ -1,23 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useLocation } from 'react-router';
 import Review from './Review'
 
 const DisplayReview = (props) => {
 
+    let location =useLocation()
+    const[reviews, setReviews] = useState();
 
+    const makeAPICall = ()=>{
+
+    }
 
 
 
     return(
         <div>
             <p>Welcome to Pet Supply reviews</p>
-            <Review
+            {/* <Review
                 reviews={props.reviews}
                 postReview={props.postReview}
                 getReviews={props.getReviews}
                 product={props.product}
                 user={props.user}
-            />
-            {props.reviews?.map((review, index ) => {
+            /> */}
+            {reviews.description.map((review, index ) => {
                 return (
                 <ul>
                     <li key={index}> {review.body} {review.starRating}  </li>
