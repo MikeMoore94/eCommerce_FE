@@ -47,26 +47,23 @@ const NavBar = (props) =>{
     let sellerURL = "/Seller/" + userId
     return ( 
         <> 
-        <div className="nav-bar">
-            <div className="col-1">
-                
-            </div>
-            <div className="col-4">
-            </div>
-            <div className="col-6 nav-links">
-            <span> <a href="/"> Home </a> </span>
-                {anon ? <span>|  <a href="/login"> Login </a> </span> :null}
-                {anon ? <span> |  <a href="/register"> Register </a> </span>:null}
-                {seller ? <span>|  <a href="/profile/edit/{userid}"> Edit Profile </a> </span>: null}
-                {seller ? <span>|  <a href={sellerURL}> Seller Menu </a> </span>: null}
-                {buyer ? <span>|  <a href={editProfileURL}> Edit Profile </a> </span>: null}
-                {seller ? <span>|  <a href="/cart">Cart</a></span>:null}
-                {buyer ? <span>|  <a href="/cart">Cart</a></span>:null}
-                {seller ? <span>|  <a href="/" onClick={onClickLogout}> Logout </a></span>: null}
-                {buyer ? <span>|  <a href="/" onClick={onClickLogout}> Logout </a></span>: null}
-            </div>
-            <div className="col-1"></div>
-        </div>
+            <section id="navBar">
+                <div class= "navBar container"></div>
+                    <div>
+                    <img src="./IMG/pets.jpg" width="100" height="140" />
+                        <span> <a href="/" class="cta"> Home </a> 
+                            {anon ? <span>|  <a href="/login" class="cta"> Login </a> </span> :null}
+                            {anon ? <span> |  <a href="/register" class="cta"> Register </a> </span>:null}
+                            {seller ? <span>|  <a href="/profile/edit/{userid}" class="cta"> Edit Profile </a> </span>: null}
+                            {seller ? <span>|  <a href={sellerURL} class="cta"> Seller Menu </a> </span>: null}
+                            {buyer ? <span>|  <a href={editProfileURL} class="cta"> Edit Profile </a> </span>: null}
+                            {seller ? <span>|  <a href="/cart" class="cta">Cart</a></span>:null}
+                            {buyer ? <span>|  <a href="/cart" class="cta">Cart</a></span>:null}
+                            {seller ? <span>|  <a href="/" onClick={onClickLogout} class="cta"> Logout </a></span>: null}
+                            {buyer ? <span>|  <a href="/" onClick={onClickLogout} class="cta"> Logout </a></span>: null}
+                        </span>
+                    </div>
+            </section>
         </>
      );
 }
