@@ -1,66 +1,57 @@
-import React, {Component} from 'react';
-import { withRouter } from 'react-router';
-import './Review.css';
+import React, {useState} from "react";
 
-class Review extends Component{
-    constructor(props){
-        super(props);
-        this.state = {
-            review: "",
-            productRating: 1,
+const CreateReview = (props) => {
 
-        }
+
+    const [review, setReview] = useState({
+        body : " ",
+        starRating : " ",
+        productId : " "
+
+    });
+
+    const handleChange = (event) => {
+        setReview(previousState => ({
+            ...previousState,
+            [event.target.name] : event.target.value
+        }) );
     }
 
-    handlesReviewChanges = (event) => {
-        this.setState({
-            review: event.target.value,
-        })
-    }
-
-    handlesProductRatingChanges = (event) => {
-        this.setState({
-            productRating: event.target.value,
-        })
-    }
-
-    handleSubmit = (event) =>{
+    const handleSubmit = (event) => {
         event.preventDefault();
-        const { review, productRating } = this.state
-        const { match: {params}, userId, addReview } = this.props
-        const rating = productRating ? parseInt(productRating) : 0
-        const productId =  params.id ? parseInt(params.id) : 0
-        const newReview = {
-            UserId: userId,
-            ProductId: productId,
-            Description: review, 
-            Rating: rating
-        }
-     
-        addReview(newReview)
+        let rating = parseInt(review.starRating);
+
+            let newReview = {
+                body : review.body,
+                // might need to use parse int for start rating for value
+                starRating : rating,
+                productId : props.productId
+            }
+            props.addReview(newReview)
     }
 
-    render(){
-        return(
-            <form onSubmit={this.handleSubmit}>
-                <div>
-                <label>Product Review</label>
-                <textarea value={this.state.review} onChange={this.handlesReviewChanges}> </ textarea>
-                </ div>
-                <div>
-                    <label>Product Rating</label>
-                    <select value={this.state.productRating} onChange={this.handlesProductRatingChanges}>
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                    </select>
-                </ div>
-                <button type="submit">Submit</button>
+    return(
+        <div>
+
+            <form action="" onSubmit={handleSubmit}>
+
+                <label htmlFor="">Review: </label>
+                <input name="body" value={review.body} onChange={handleChange} type="text"/>
+                <label htmlFor="">Rating:</label>
+                <select name="starRating" id="starRating" value={review.starRating} onChange={handleChange}>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+                <button type="submit">Submit Review</button>
+                {/*<input name="LastName" value={registerUsers.LastName} onChange={handleChange} type="text"/>*/}
+
             </form>
-        )
-    }
+
+        </div>
+    )
 }
 
-export default withRouter(Review)
+export default CreateReview;

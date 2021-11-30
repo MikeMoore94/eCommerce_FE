@@ -230,6 +230,18 @@ class App extends Component {
       history.go('/store');
     }
 
+    getReviews = async (productId) => {
+      try{
+        let response = await axios.get(`https://localhost:44394/api/product/${productId}`);
+        this.setState({
+          reviews: response.data
+        })
+      }
+      catch(er) {
+        console.log("Error with getReview", er)
+      }
+    }
+
     render(){
       return(
         <Container fluid>
