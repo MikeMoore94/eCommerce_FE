@@ -23,7 +23,6 @@ const CreateReview = (props) => {
 
             let newReview = {
                 body : review.body,
-                // might need to use parse int for start rating for value
                 starRating : rating,
                 productId : props.productId
             }
@@ -46,7 +45,6 @@ const CreateReview = (props) => {
                     <option value="5">5</option>
                 </select>
                 <button type="submit">Submit Review</button>
-                {/*<input name="LastName" value={registerUsers.LastName} onChange={handleChange} type="text"/>*/}
 
             </form>
 

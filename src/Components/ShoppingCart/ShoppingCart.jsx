@@ -16,7 +16,7 @@ const ShoppingCart = ({ userId, items, updateQuantity, deleteProduct }) => {
                   <th> Price </th>
                   <th> Description </th>
                   <th> Category </th>
-                  <th> Rating </th>
+                  {/* <th> Rating </th> */}
                   <th> Quantity </th>
                 </tr>
               </thead>
@@ -26,7 +26,7 @@ const ShoppingCart = ({ userId, items, updateQuantity, deleteProduct }) => {
                   <td>${item.price * item.quantity}</td>
                   <td>{item.description}</td>
                   <td>{item.category}</td>
-                  <td>{item.rating}</td>
+                  {/* <td>{item.rating}</td> */}
                   <td>
                     <button onClick={() => updateQuantity(item.quantity - 1, item.shoppingCartId)} type="button" className="cart-btn cartButton"> - </button>
                     {item.quantity}

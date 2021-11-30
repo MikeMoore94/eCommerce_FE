@@ -1,53 +1,46 @@
-/* Elements */
-li {
-    padding: 10px 0;
-}
-
-.navButton {
-    font-size: 30px;
-    margin-right: 30px;
-    color: white;
-    background: transparent;
-    border: none;
-    cursor: pointer;
-    outline: none;
-    float: right;
-}
-
-/* Class */
-* {
-    padding: 0;
-    margin: 0;
-    box-sizing: border-box;
-}
-
-.container{
-    min-height: 40vh;
-    width: 200%;
-    display: flex;
-    align-items: center;
-    justify-content: content center;
-}
-    
-
-.nav-bar {
-    background-image: url(./IMG/pets.jpg);
+#navBar{
     background-size: cover;
     background-position: top center;
     position: relative;
     z-index: 1;
 }
-
-
-
-.links {
-  height: 0;
-  overflow: hidden;
-  list-style-type: none;
-  font-weight: bold;
+#navBar::after{
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: auto;
+    width: 140;
+    background-color: black;
+    opacity: .7;
+    z-index: -1;
+}
+#navBar .navBar{
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 70px;
+    justify-content: flex-start;
+}
+#navBar h1{
+    display: block;
+    width: fit-content;
+    font-size: 4rem;
+    position: relative;
+    color: black
+}
+#navBar .cta{
+    display: inline-block;
+    padding: 5px;
+    background-color: transparent;
+    font-size: 1rem;
+    text-transform: uppercase;
+    letter-spacing: .1rem;
+    margin-top: 30px;
+    transition: .3s ease;
+    transition-property: background-color, color;
+}
+#navBar .cta:hover{
+    color: white;
+    background-color: green;
 }
 
-.show-nav {
-    height: 120px;
-}
 
