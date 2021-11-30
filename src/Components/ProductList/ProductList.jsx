@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import ProductDisplay from "../ProductDetails/ProductDisplay";
 import "./ProductList.css";
 import { Route } from "react-router";
@@ -11,13 +12,21 @@ export class ProductList extends Component {
     };
   }
   render() {
-    const { products, currentUserId, handleDelete, handleAddToCart } =
+    const { reviews, products, currentUserId, handleDelete, handleAddToCart } =
       this.props;
     return (
       <div>
           <a href="/product"> Sell an item </a>
           <div>
             {products.map(function (product) {
+              let rating = 0
+              let numReviews = 0
+              for (const review of reviews) {
+                if (product.productId === review.productId) {
+                  rating = rating + review.rating
+                  numReviews++
+                }
+              }
               return (
                 <table className="productTable">
                   <thead>
@@ -56,8 +65,8 @@ export class ProductList extends Component {
                       <td>{product.description}</td>
                       <td>{product.category}</td>
                       <td>
-                        {product.rating}
-                        <button onClick={() => <a href='/reviews'></a>}>Leave A Review</button>
+                        {rating !== 0 && numReviews !== 0 ?  (rating/numReviews).toFixed(1) : 0}
+                        <Link to={`/reviews/${product.productId}`}>Leave A Review</Link>
                       </td>
                     </tr>
                   </tbody>

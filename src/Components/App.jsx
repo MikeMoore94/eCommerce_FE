@@ -37,7 +37,8 @@ class App extends Component {
         searchEnable: false,
         userType: false,
         searchTerm: "",
-        shoppingCartItems: []
+        shoppingCartItems: [],
+        productReviews: []
       };
     };
 
@@ -178,6 +179,7 @@ class App extends Component {
       const {currentUserId} = this.state;
       let cartItems = []
       const productResponse = await axios.get('https://localhost:44394/api/product');
+      const reviewResponse = await axios.get('https://localhost:44394/api/reviews');
       if(currentUserId){
       const cartResponse = await axios.get(`https://localhost:44394/api/shoppingcart/${currentUserId}`);
       for (const product of productResponse.data) {
@@ -192,7 +194,8 @@ class App extends Component {
     }
       this.setState({
         products: productResponse.data,
-        shoppingCartItems: cartItems
+        shoppingCartItems: cartItems,
+        productReviews: reviewResponse.data
       })
     }
 
@@ -221,6 +224,12 @@ class App extends Component {
       })
     }
 
+    addReview = async (review) => {
+      const response = await axios.post('https://localhost:44394/api/reviews', review);
+      history.push('/store');
+      history.go('/store');
+    }
+
     render(){
       return(
         <Container fluid>
@@ -229,13 +238,13 @@ class App extends Component {
             <Switch>
             {this.state.loggedIn ? <Route exact path="/" render={() => <SearchBar props={this.state.products} addItemToShoppingCart={this.addItemToShoppingCart} loggedIn={this.state.loggedIn} />}/> : <Route exact path="/" render={() => <Anon />}/>}
             
-            <Route exact path='/' render={() => <ProductList products={this.state.products} currentUserId={this.state.currentUserId} handleDelete={this.deleteProduct} handleAddToCart={this.addItemToShoppingCart} />} />
+            <Route exact path='/store' render={() => <ProductList reviews={this.state.productReviews} products={this.state.products} currentUserId={this.state.currentUserId} handleDelete={this.deleteProduct} handleAddToCart={this.addItemToShoppingCart} />} />
             <Route exact path='/login' render={() => <Login login={this.loginUser}/>} />
             <Route exact path='/register' render={() => <Register register={this.register}/>}/>
             <Route exact path='/profile/edit/:id' render={() => <EditProfile user={this.state.user.id} />}/>
             <Route exact path='/cart' render={() => <ShoppingCart items={this.state.shoppingCartItems} updateQuantity={this.updateCartQuantity} />}/>
-            <Route exact path='/product' render={() => <ProductList productId={null} currentUserId={this.state.currentUserId} />}/>
-            <Route exact path='/reviews' render={() => <Review products={this.state.products} userId={this.state.user.id}/>}/>
+            <Route exact path='/product' render={() => <ProductForm productId={null} currentUserId={this.state.currentUserId} />}/>
+            <Route exact path='/reviews/:id' render={() => <Review userId={this.state.user.id} addReview={this.addReview} />}/>
             </Switch>
           </Router>
         </Container>

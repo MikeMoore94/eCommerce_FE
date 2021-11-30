@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { withRouter } from 'react-router';
 import './Review.css';
 
 class Review extends Component{
@@ -6,8 +7,7 @@ class Review extends Component{
         super(props);
         this.state = {
             review: "",
-            product_id: '',
-            product_rating:'',
+            productRating: 1,
 
         }
     }
@@ -20,13 +20,24 @@ class Review extends Component{
 
     handlesProductRatingChanges = (event) => {
         this.setState({
-            product_rating: event.target.value,
+            productRating: event.target.value,
         })
     }
 
     handleSubmit = (event) =>{
         event.preventDefault();
+        const { review, productRating } = this.state
+        const { match: {params}, userId, addReview } = this.props
+        const rating = productRating ? parseInt(productRating) : 0
+        const productId =  params.id ? parseInt(params.id) : 0
+        const newReview = {
+            UserId: userId,
+            ProductId: productId,
+            Description: review, 
+            Rating: rating
+        }
      
+        addReview(newReview)
     }
 
     render(){
@@ -38,7 +49,7 @@ class Review extends Component{
                 </ div>
                 <div>
                     <label>Product Rating</label>
-                    <select value={this.state.product_rating} onChange={this.handlesProductRatingChanges}>
+                    <select value={this.state.productRating} onChange={this.handlesProductRatingChanges}>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -52,4 +63,4 @@ class Review extends Component{
     }
 }
 
-export default Review
+export default withRouter(Review)
