@@ -39,7 +39,7 @@ class Login extends Component {
                 <div className ="row login-page-row">    
                     <div className="col-4 mx-5"> 
                         <h1>Welcome!</h1>
-                        <h3> Thank you for seeing us! You can request to become a seller from your profile!</h3>
+                        <h3> Thank you for shopping with us!</h3>
                     </div>
                     <div className="col-6 mx-5">
                         <Form className = "login-form" onSubmit ={this.handleSubmit}>

@@ -121,7 +121,6 @@ class RegisterPage extends Component {
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="formBasicButton">
                             <button className="reg-button" type='submit' value='Submit'>Register Account</button>{' '}
-                            <button className="reg-button" type='reset' value='reset'>Clear Form</button>
                             </Form.Group>
                         </Form>
                         <Col sm={1}>
