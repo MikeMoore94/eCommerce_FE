@@ -6,7 +6,7 @@ import { Container } from "react-bootstrap";
 import NavBar from "./NavBar/NavBar";
 import { Router, Route, Switch } from "react-router";
 import Login from "./Login/Login";
-import EditProfile from "./EditProfile/EditProfile";
+// import EditProfile from "./EditProfile/EditProfile";
 import Register from "./Register/Register";
 import ProductList from "./ProductList/ProductList";
 import ShoppingCart from "./ShoppingCart/ShoppingCart";
@@ -241,7 +241,7 @@ class App extends Component {
             <Route exact path='/store' render={() => <ProductList reviews={this.state.productReviews} products={this.state.products} currentUserId={this.state.currentUserId} handleDelete={this.deleteProduct} handleAddToCart={this.addItemToShoppingCart} />} />
             <Route exact path='/login' render={() => <Login login={this.loginUser}/>} />
             <Route exact path='/register' render={() => <Register register={this.register}/>}/>
-            <Route exact path='/profile/edit/:id' render={() => <EditProfile user={this.state.user.id} />}/>
+            {/* <Route exact path='/profile/edit/:id' render={() => <EditProfile user={this.state.user.id} />}/> */}
             <Route exact path='/cart' render={() => <ShoppingCart items={this.state.shoppingCartItems} updateQuantity={this.updateCartQuantity} />}/>
             <Route exact path='/product' render={() => <ProductForm productId={null} currentUserId={this.state.currentUserId} />}/>
             <Route exact path='/reviews/:id' render={() => <Review userId={this.state.user.id} addReview={this.addReview} />}/>

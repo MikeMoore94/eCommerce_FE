@@ -7,7 +7,7 @@ class Review extends Component{
         super(props);
         this.state = {
             review: "",
-            productRating: 1,
+            productRating: 1, 
 
         }
     }
@@ -30,19 +30,24 @@ class Review extends Component{
         const { match: {params}, userId, addReview } = this.props
         const rating = productRating ? parseInt(productRating) : 0
         const productId =  params.id ? parseInt(params.id) : 0
+        
         const newReview = {
             UserId: userId,
             ProductId: productId,
             Description: review, 
-            Rating: rating
+            Rating: rating,
+            
         }
      
         addReview(newReview)
     }
 
+    
+
     render(){
         return(
             <form onSubmit={this.handleSubmit}>
+            
                 <div>
                 <label>Product Review</label>
                 <textarea value={this.state.review} onChange={this.handlesReviewChanges}> </ textarea>
@@ -58,7 +63,9 @@ class Review extends Component{
                     </select>
                 </ div>
                 <button type="submit">Submit</button>
+                
             </form>
+                   
         )
     }
 }

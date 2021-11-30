@@ -182,4 +182,4 @@ class EditProfile extends Component {
         );
     }
 }
-export default withRouter (EditProfile);
+// export default withRouter (EditProfile);
