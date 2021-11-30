@@ -9,7 +9,7 @@ const DisplayReview = (props) => {
 
     return(
         <div>
-            <p>Welcome to book reviews</p>
+            <p>Welcome to Pet Supply reviews</p>
             <Review
                 reviews={props.reviews}
                 postReview={props.postReview}
