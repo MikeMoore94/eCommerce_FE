@@ -28,10 +28,10 @@ const ShoppingCart = ({ userId, items, updateQuantity, deleteProduct }) => {
                   <td>{item.category}</td>
                   <td>{item.rating}</td>
                   <td>
-                    <button onClick={() => updateQuantity(item.quantity - 1, item.shoppingCartId)} type="button" className="cart-btn button"> - </button>
+                    <button onClick={() => updateQuantity(item.quantity - 1, item.shoppingCartId)} type="button" className="cart-btn cartButton"> - </button>
                     {item.quantity}
-                    <button onClick={() => updateQuantity(item.quantity + 1, item.shoppingCartId)} type="button" className="cart-btn button"> + </button>
-                    <button onClick={() => updateQuantity(0, item.shoppingCartId)} type="button" className="cart-btn button"> Remove </button>
+                    <button onClick={() => updateQuantity(item.quantity + 1, item.shoppingCartId)} type="button" className="cart-btn cartButton"> + </button>
+                    <button onClick={() => updateQuantity(0, item.shoppingCartId)} type="button" className="cart-btn cartButton"> Remove </button>
                   </td>
                 </tr>
               </tbody>
@@ -39,14 +39,6 @@ const ShoppingCart = ({ userId, items, updateQuantity, deleteProduct }) => {
           );
         })}
       </div>
-      {/* <div className="cart-card-footer">
-                <div class="cart-btn-group" role="group" aria-label="Basic outlined example">
-                    <button onClick={() => setCount(count - 1)} type="button" className="cart-btn">-</button>
-                    <button type="button" className="cart-btn">{count}</button>
-                    <button onClick={() => setCount(count + 1)} type="button" className="cart-btn">+</button>
-                    <button onClick={onClickQuantity} type="button" className="cart-btn">Update</button>
-                </div>
-            </div> */}
     </div>
   );
 };
